@@ -1,0 +1,33 @@
+---
+const { currentLang = "es" } = Astro.props;
+let lang = currentLang;
+function toggleLang() {
+  lang = lang === "es" ? "en" : "es";
+  // Aquí puedes emitir un evento o llamar a una función para cambiar el idioma global
+}
+---
+
+<div class="relative w-12 h-7">
+  <input
+    type="checkbox"
+    class="sr-only"
+    checked={lang === "en"}
+    onChange={toggleLang}
+    aria-label="Cambiar idioma"
+  />
+  <div class="block w-12 h-7 bg-gray-300 rounded-full"></div>
+  <div class={`dot absolute top-1 left-1 w-5 h-5 rounded-full transition-all duration-300 bg-white shadow
+    ${lang === "en" ? "translate-x-5" : ""}`}>
+    <!-- Aquí puedes poner la bandera según el idioma -->
+  </div>
+</div>
+
+<style>
+  .dot {
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+</style>

@@ -1,0 +1,180 @@
+---
+const projects = [
+  {
+    title: "MyHandStats",
+    description: `En este proyecto he desarrollado una aplicación para el análisis de
+      estadísticas de balonmano, como parte de mi Trabajo de Fin de Grado. La
+      app permite registrar y visualizar datos de partidos y jugadores,
+      facilitando el análisis de rendimiento. Para el backend se ha utilizado
+      Python, la interfaz está construida con React y los datos se almacenan
+      en una base de datos PostgreSQL desplegado en Supabase.`,
+    image: "/img/myhandstats-proyect.png",
+    alt: "MyHandStats",
+    tech: ["React", "Python", "PostgreSQL"],
+    techColors: [
+      "bg-blue-500/20 text-blue-200",
+      "bg-yellow-500/20 text-yellow-200",
+      "bg-indigo-500/20 text-indigo-200",
+    ],
+    links: [
+      {
+        href: "https://github.com/pmerida08/myHandStats",
+        icon: "/svg/github.svg",
+        label: "Code",
+        bg: "bg-gray-800/70 hover:bg-gray-700",
+      },
+      {
+        href: "https://myhandstats.netlify.app/",
+        icon: "/svg/url.svg",
+        label: "Web",
+        bg: "bg-blue-800/70 hover:bg-blue-700",
+      },
+    ],
+  },
+  {
+    title: "Reserva de Casas Rurales",
+    description: `En este proyecto se ha desarrollado una página web para la reserva de
+      casas rurales, con un diseño responsive y un panel de administración
+      para la gestión de las reservas, implementando también un modo oscuro
+      nativo. Para este proyecto se ha utilizado HTML, CSS y JS.`,
+    image: "/img/proyectoCasas.png",
+    alt: "casas-rurales",
+    tech: ["HTML", "CSS", "JavaScript"],
+    techColors: [
+      "bg-orange-500/20 text-orange-200",
+      "bg-blue-500/20 text-blue-200",
+      "bg-yellow-500/20 text-yellow-200",
+    ],
+    links: [
+      {
+        href: "https://github.com/iesgrancapitan-diw/practica12-diw-josemmp2005",
+        icon: "/svg/github.svg",
+        label: "Code",
+        bg: "bg-gray-800/70 hover:bg-gray-700",
+      },
+      {
+        href: "https://iesgrancapitan-diw.github.io/practica12-diw-josemmp2005/",
+        icon: "/svg/url.svg",
+        label: "Web",
+        bg: "bg-blue-800/70 hover:bg-blue-700",
+      },
+    ],
+  },
+  {
+    title: "Gestión de Portfolios",
+    description: `Para este proyecto he desarrollado una aplicación web para la gestión de
+      portfolios, desde la creación de los mismos hasta la edición de estos,
+      pudiendo añadir, proyectos, habilidades y experiencias. En este proyecto
+      se ha utilizado HTML, CSS, PHP y MySQL.`,
+    image: "/img/proyectoPortfolio2.png",
+    alt: "Gestión de Portfolios",
+    tech: ["HTML", "CSS", "PHP", "MySQL"],
+    techColors: [
+      "bg-orange-500/20 text-orange-200",
+      "bg-blue-500/20 text-blue-200",
+      "bg-indigo-500/20 text-indigo-200",
+      "bg-yellow-700/20 text-yellow-200",
+    ],
+    links: [
+      {
+        href: "https://github.com/josemmp2005/proyecto_portfolios",
+        icon: "/svg/github.svg",
+        label: "Code",
+        bg: "bg-gray-800/70 hover:bg-gray-700",
+      },
+    ],
+  },
+  {
+    title: "Gestión de Centros Cívicos",
+    description: `En este proyecto se ha desarrollado una aplicación web para la gestión
+      de centros cívicos, desde la creación de una API en PHP para el manejo
+      de la base de datos en MySQL, hasta la creación de una aplicación en
+      React para la gestión de los centros cívicos.`,
+    image: "/img/centrosCivicos.png",
+    alt: "Gestión de Centros Cívicos",
+    tech: ["PHP", "MySQL", "React"],
+    techColors: [
+      "bg-indigo-500/20 text-indigo-200",
+      "bg-yellow-700/20 text-yellow-200",
+      "bg-blue-500/20 text-blue-200",
+    ],
+    links: [
+      {
+        href: "#",
+        icon: "/svg/github.svg",
+        label: "Code",
+        bg: "bg-gray-800/70 hover:bg-gray-700",
+      },
+    ],
+  },
+  {
+    title: "Página de Venta de Zapatillas",
+    description: `En este proyecto se ha desarrollado una página web para la venta de
+      zapatillas, con un diseño responsive y un panel de administración para
+      la gestión de los productos. Para este proyecto se ha utilizado
+      Wordpress y Woocommerce para la creación de la tienda online.`,
+    image: "/img/proyectoWordpress.png",
+    alt: "Página de Venta de Zapatillas",
+    tech: ["WordPress", "WooCommerce"],
+    techColors: [
+      "bg-blue-800/20 text-blue-200",
+      "bg-pink-500/20 text-pink-200",
+    ],
+    links: [
+      {
+        href: "#",
+        icon: "/svg/github.svg",
+        label: "Code",
+        bg: "bg-gray-800/70 hover:bg-gray-700",
+      },
+    ],
+  },
+];
+---
+<section class="py-12 text-white bg-transparent">
+  <h2 class="text-3xl font-bold text-center mb-12 tracking-wide">Proyectos</h2>
+  <div class="px-4 md:px-12">
+    {
+      projects.map((project) => (
+        <article class="max-w-4xl mx-auto bg-white/10 rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-8 items-center mb-10">
+          <div class="flex-1 flex flex-col">
+            <h3 class="text-2xl font-semibold mb-4 text-blue-300">
+              {project.title}
+            </h3>
+            <p class="mb-4 text-base leading-relaxed">{project.description}</p>
+            <div class="flex gap-3 flex-wrap mb-4">
+              {project.tech.map((tech, idx) => (
+                <span
+                  class={`px-3 py-1 rounded-full text-sm font-semibold ${project.techColors[idx]}`}
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-4 md:gap-6">
+            <img
+              src={project.image}
+              alt={project.alt}
+              class="rounded-xl shadow-lg max-w-xs w-full object-cover border border-white/10"
+              loading="lazy"
+            />
+            <div class="flex gap-4 mt-2">
+              {project.links.map((link) => (
+                <a
+                  href={link.href}
+                  class={`flex items-center gap-2 px-3 py-1 rounded transition ${link.bg}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={link.icon} alt={link.label} class="w-5 h-5" />
+                  <span>{link.label}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>

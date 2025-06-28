@@ -1,0 +1,30 @@
+---
+const aboutMe = [
+  {
+    title: "¿Quién Soy?",
+    text: `Desde pequeño me fascinaban los ordenadores. Me gustaba desmontarlos, instalar programas y descubrir cómo funcionaban por dentro. Esa curiosidad fue el primer paso hacia el mundo de la programación y la tecnología, donde encontré mi verdadera pasión.`
+  },
+  {
+    title: "Tecnología y deporte",
+    text: `El deporte siempre ha sido una parte importante de mi vida. Me ha enseñado disciplina, constancia y cómo trabajar en equipo. Gracias a él, mantengo el equilibrio físico y mental que necesito para rendir mejor en mis proyectos.`
+  },
+  {
+    title: "Mirando al futuro",
+    text: `Actualmente sigo formándome como desarrollador, con un fuerte interés en la inteligencia artificial. Mi objetivo es especializarme en este campo y aplicar el conocimiento en soluciones reales que tengan un impacto positivo en el mundo.`
+  }
+];
+---
+
+<section class="py-12">
+  <h2 class="text-3xl font-bold text-center text-white mb-8 tracking-wide">Sobre Mi</h2>
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid md:grid-cols-3 gap-8">
+      {aboutMe.map((item) => (
+        <article class="bg-white/10 rounded-xl shadow-lg p-8 text-white flex flex-col">
+          <h3 class="text-xl font-semibold text-blue-300 mb-2">{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,91 @@
+---
+// filepath: c:\Users\Usuario\Desktop\DAW\portfolio\src\components\Sidebar.astro
+const links = [
+  { href: "#skills", label: "Skills" },
+  { href: "#proyectos", label: "Proyectos" },
+  { href: "#formacion", label: "Formación" },
+  { href: "#sobreMi", label: "Sobre Mí" },
+];
+---
+
+<!-- Botón Hamburguesa -->
+<div
+  id="menu-btn"
+  class="relative z-50 flex flex-col justify-between w-9 h-7 cursor-pointer rounded-lg  shadow-lg lg:hidden transition hover:scale-105"
+  tabindex="0"
+  aria-label="Abrir menú"
+>
+  <span class="block h-1 bg-blue-300 rounded transition-transform origin-center"></span>
+  <span class="block h-1 bg-blue-300 rounded transition-opacity"></span>
+  <span class="block h-1 bg-blue-300 rounded transition-transform origin-center"></span>
+</div>
+
+<!-- Menú desplegable -->
+<nav
+  id="menu"
+  class="fixed top-0 left-0 w-full h-full bg-white/75 backdrop-blur-md transform -translate-y-full transition-transform duration-300 z-40 flex flex-col items-center justify-center lg:hidden"
+  aria-label="Menú principal"
+>
+  <ul class="flex flex-col items-center justify-center h-full space-y-10 text-2xl font-bold">
+    {links.map(link => (
+      <li>
+        <a
+          href={link.href}
+          class="text-blue-800 hover:text-green-700 transition-colors duration-200"
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<!-- Script -->
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+    const bars = menuBtn.querySelectorAll("span");
+    let isOpen = false;
+
+    function openMenu() {
+      isOpen = true;
+      menu.classList.remove("-translate-y-full");
+      document.body.style.overflow = "hidden";
+      bars[0].classList.add("rotate-45", "translate-y-2");
+      bars[1].classList.add("opacity-0");
+      bars[2].classList.add("-rotate-45", "-translate-y-2");
+    }
+
+    function closeMenu() {
+      isOpen = false;
+      menu.classList.add("-translate-y-full");
+      document.body.style.overflow = "";
+      bars[0].classList.remove("rotate-45", "translate-y-2");
+      bars[1].classList.remove("opacity-0");
+      bars[2].classList.remove("-rotate-45", "-translate-y-2");
+    }
+
+    menuBtn.addEventListener("click", () => {
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    menuBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        isOpen ? closeMenu() : openMenu();
+      }
+    });
+
+    document.querySelectorAll("#menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        closeMenu();
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1024) {
+        closeMenu();
+      }
+    });
+  });
+</script>

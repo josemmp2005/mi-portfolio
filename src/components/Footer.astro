@@ -1,0 +1,49 @@
+---
+const year = new Date().getFullYear();
+const links = [
+  {
+    href: "https://github.com/tuusuario",
+    icon: "svg/github.svg",
+    alt: "GitHub",
+  },
+  {
+    href: "https://linkedin.com/in/tuusuario",
+    icon: "svg/linkedin.svg",
+    alt: "Linkedin",
+  },
+  {
+    href: "/cv.pdf",
+    icon: "svg/file.svg",
+    alt: "CV",
+  },
+  {
+    href: "mailto:josemayenp@gmail.com",
+    icon: "svg/mail.svg",
+    alt: "Email",
+  },
+];
+---
+
+<section>
+    <div></div>
+</section>
+
+<footer class="bg-white/10 text-white py-6 mt-12">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4">
+    <span class="text-sm">&copy; {year} José María Mayén. Todos los derechos reservados.</span>
+
+    <div class="flex gap-4">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          target={link.href.startsWith("http") ? "_blank" : undefined}
+          rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+          aria-label={link.alt}
+          class="hover:scale-110 transition-transform"
+        >
+          <img src={link.icon} alt={link.alt} class="w-6 h-6" />
+        </a>
+      ))}
+    </div>
+  </div>
+</footer>

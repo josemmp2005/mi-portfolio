@@ -1,0 +1,43 @@
+---
+import Sidebar from "./Sidebar.astro";
+import LanguageToggle from "./LanguageToggle.astro";
+---
+
+<header
+  id="main-header"
+  class="fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out"
+  style="width:93%;justify-self:anchor-center;"
+>
+  <div
+    class="w-full mx-auto px-4 flex justify-between items-center h-16 transition-all duration-300"
+    id="navbar-inner"
+  >
+    <LanguageToggle />
+    <Sidebar />
+  </div>
+
+  <script is:inline>
+    const header = document.getElementById("main-header");
+    const inner = document.getElementById("navbar-inner");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 10) {
+        header.classList.add(
+          "bg-white/30",
+          "shadow-lg",
+          "rounded-full",
+          "mt-4",
+        );
+        inner.classList.add("h-14");
+      } else {
+        header.classList.remove(
+          "bg-white/30",
+          "shadow-lg",
+          "rounded-full",
+          "mt-4",
+        );
+        inner.classList.remove("h-14");
+      }
+    });
+  </script>
+</header>

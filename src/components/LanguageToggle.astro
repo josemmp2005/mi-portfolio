@@ -1,26 +1,47 @@
 ---
 const { currentLang = "es" } = Astro.props;
-let lang = currentLang;
-function toggleLang() {
-  lang = lang === "es" ? "en" : "es";
-  // Aquí puedes emitir un evento o llamar a una función para cambiar el idioma global
-}
 ---
 
-<div class="relative w-12 h-7">
+<div class="relative w-14 h-8 select-none">
   <input
     type="checkbox"
-    class="sr-only"
-    checked={lang === "en"}
-    onChange={toggleLang}
+    class="sr-only peer"
+    id="lang-switch"
+    checked={currentLang === "en"}
     aria-label="Cambiar idioma"
+    onChange={() => {
+      const lang = currentLang === "es" ? "en" : "es";
+      // Guardar posición scroll antes de recargar
+      sessionStorage.setItem("savedScroll", window.scrollY);
+      // Modificar URL con nuevo idioma
+      const url = new URL(window.location.href);
+      url.searchParams.set("lang", lang);
+      window.location.href = url.toString();
+    }}
   />
-  <div class="block w-12 h-7 bg-gray-300 rounded-full"></div>
-  <div class={`dot absolute top-1 left-1 w-5 h-5 rounded-full transition-all duration-300 bg-white shadow
-    ${lang === "en" ? "translate-x-5" : ""}`}>
-    <!-- Aquí puedes poner la bandera según el idioma -->
+  <label for="lang-switch" class="block w-14 h-8 bg-white/10 border border-blue-400/30 rounded-full cursor-pointer shadow-inner transition peer-checked:bg-blue-400/20"></label>
+  <div class="dot absolute top-1 left-1 w-6 h-6 rounded-full transition-all duration-300 bg-white shadow-lg flex items-center justify-center text-lg pointer-events-none
+    peer-checked:translate-x-6 border border-blue-300">
+    <img
+      src={currentLang === "en" ? "/img/eng.png" : "/img/esp.png"}
+      alt={currentLang === "en" ? "English" : "Español"}
+      class="w-5 h-5"
+      draggable="false"
+    />
   </div>
 </div>
+
+<script is:inline>
+  if (typeof window !== "undefined") {
+    window.addEventListener("load", () => {
+      const savedScroll = sessionStorage.getItem("savedScroll");
+      if (savedScroll) {
+        window.scrollTo(0, parseInt(savedScroll, 10));
+        sessionStorage.removeItem("savedScroll");
+      }
+    });
+  }
+</script>
 
 <style>
   .dot {
@@ -28,6 +49,7 @@ function toggleLang() {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
+    pointer-events: none;
   }
 </style>

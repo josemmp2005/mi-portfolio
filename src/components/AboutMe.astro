@@ -15,12 +15,15 @@ const aboutMe = [
 ];
 ---
 
-<section class="py-12">
+<section class="py-12" id="sobreMi">
   <h2 class="text-3xl font-bold text-center text-white mb-8 tracking-wide">Sobre Mi</h2>
   <div class="max-w-6xl mx-auto px-4">
-    <div class="grid md:grid-cols-3 gap-8">
+    <div
+      class="grid md:grid-cols-3 gap-8 opacity-0 translate-y-8 transition-all duration-700"
+      id="aboutme-anim"
+    >
       {aboutMe.map((item) => (
-        <article class="bg-white/10 rounded-xl shadow-lg p-8 text-white flex flex-col">
+        <article class="bg-white/10 rounded-xl shadow-lg p-8 text-white flex flex-col transition-transform duration-300 hover:scale-105 hover:bg-white/20">
           <h3 class="text-xl font-semibold text-blue-300 mb-2">{item.title}</h3>
           <p>{item.text}</p>
         </article>
@@ -28,3 +31,20 @@ const aboutMe = [
     </div>
   </div>
 </section>
+
+<script is:inline>
+  const aboutMeAnim = document.getElementById("aboutme-anim");
+  function checkAboutMeAnim() {
+    const rect = aboutMeAnim.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100 && rect.bottom > 100) {
+      aboutMeAnim.classList.remove("opacity-0", "translate-y-8");
+      aboutMeAnim.classList.add("opacity-100", "translate-y-0");
+    } else {
+      aboutMeAnim.classList.remove("opacity-100", "translate-y-0");
+      aboutMeAnim.classList.add("opacity-0", "translate-y-8");
+    }
+  }
+  window.addEventListener("scroll", checkAboutMeAnim);
+  window.addEventListener("resize", checkAboutMeAnim);
+  checkAboutMeAnim();
+</script>

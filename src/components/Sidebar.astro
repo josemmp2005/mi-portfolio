@@ -8,25 +8,25 @@ const links = [
 ];
 ---
 
-<!-- Botón Hamburguesa -->
+<!-- Botón Hamburguesa SOLO en móvil/tablet -->
 <div
   id="menu-btn"
-  class="relative z-50 flex flex-col justify-between w-9 h-7 cursor-pointer rounded-lg  shadow-lg lg:hidden transition hover:scale-105"
+  class="relative z-50 flex flex-col justify-between w-7 h-5 cursor-pointer rounded-lg shadow-lg lg:hidden transition hover:scale-105"
   tabindex="0"
   aria-label="Abrir menú"
 >
-  <span class="block h-1 bg-blue-300 rounded transition-transform origin-center"></span>
-  <span class="block h-1 bg-blue-300 rounded transition-opacity"></span>
-  <span class="block h-1 bg-blue-300 rounded transition-transform origin-center"></span>
+  <span class="block h-[3px] bg-blue-300 rounded transition-transform origin-center"></span>
+  <span class="block h-[3px] bg-blue-300 rounded transition-opacity"></span>
+  <span class="block h-[3px] bg-blue-300 rounded transition-transform origin-center"></span>
 </div>
 
-<!-- Menú desplegable -->
+<!-- Menú desplegable SOLO en móvil/tablet -->
 <nav
   id="menu"
   class="fixed top-0 left-0 w-full h-full bg-white/75 backdrop-blur-md transform -translate-y-full transition-transform duration-300 z-40 flex flex-col items-center justify-center lg:hidden"
   aria-label="Menú principal"
 >
-  <ul class="flex flex-col items-center justify-center h-full space-y-10 text-2xl font-bold">
+  <ul class="flex flex-col items-center justify-center h-full space-y-8 text-lg font-bold">
     {links.map(link => (
       <li>
         <a
@@ -40,7 +40,18 @@ const links = [
   </ul>
 </nav>
 
-<!-- Script -->
+<!-- Opciones de menú SIEMPRE visibles en PC -->
+<nav class="hidden lg:flex gap-8 items-center font-bold text-base">
+  {links.map(link => (
+    <a
+      href={link.href}
+      class="text-blue-300 hover:text-green-700 transition-colors duration-200"
+    >
+      {link.label}
+    </a>
+  ))}
+</nav>
+
 <script type="module">
   document.addEventListener("DOMContentLoaded", () => {
     const menuBtn = document.getElementById("menu-btn");
@@ -52,18 +63,18 @@ const links = [
       isOpen = true;
       menu.classList.remove("-translate-y-full");
       document.body.style.overflow = "hidden";
-      bars[0].classList.add("rotate-45", "translate-y-2");
+      bars[0].classList.add("rotate-45", "translate-y-1");
       bars[1].classList.add("opacity-0");
-      bars[2].classList.add("-rotate-45", "-translate-y-2");
+      bars[2].classList.add("-rotate-45", "-translate-y-1");
     }
 
     function closeMenu() {
       isOpen = false;
       menu.classList.add("-translate-y-full");
       document.body.style.overflow = "";
-      bars[0].classList.remove("rotate-45", "translate-y-2");
+      bars[0].classList.remove("rotate-45", "translate-y-1");
       bars[1].classList.remove("opacity-0");
-      bars[2].classList.remove("-rotate-45", "-translate-y-2");
+      bars[2].classList.remove("-rotate-45", "-translate-y-1");
     }
 
     menuBtn.addEventListener("click", () => {

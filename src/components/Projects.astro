@@ -131,12 +131,15 @@ const projects = [
   },
 ];
 ---
-<section class="py-12 text-white bg-transparent">
+<section class="py-12 text-white bg-transparent" id="proyectos">
   <h2 class="text-3xl font-bold text-center mb-12 tracking-wide">Proyectos</h2>
-  <div class="px-4 md:px-12">
+  <div
+    class="px-4 md:px-12 opacity-0 translate-y-8 transition-all duration-700"
+    id="projects-anim"
+  >
     {
       projects.map((project) => (
-        <article class="max-w-4xl mx-auto bg-white/10 rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-8 items-center mb-10">
+        <article class="transition-transform duration-300 hover:scale-105 hover:bg-white/20 max-w-4xl mx-auto bg-white/10 rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-8 items-center mb-10">
           <div class="flex-1 flex flex-col">
             <h3 class="text-2xl font-semibold mb-4 text-blue-300">
               {project.title}
@@ -178,3 +181,20 @@ const projects = [
     }
   </div>
 </section>
+
+<script is:inline>
+  const projectsAnim = document.getElementById("projects-anim");
+  function checkProjectsAnim() {
+    const rect = projectsAnim.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100 && rect.bottom > 100) {
+      projectsAnim.classList.remove("opacity-0", "translate-y-8");
+      projectsAnim.classList.add("opacity-100", "translate-y-0");
+    } else {
+      projectsAnim.classList.remove("opacity-100", "translate-y-0");
+      projectsAnim.classList.add("opacity-0", "translate-y-8");
+    }
+  }
+  window.addEventListener("scroll", checkProjectsAnim);
+  window.addEventListener("resize", checkProjectsAnim);
+  checkProjectsAnim();
+</script>

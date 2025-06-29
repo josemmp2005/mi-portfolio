@@ -30,8 +30,7 @@ const links = [
 
 <footer class="bg-white/10 text-white py-6 mt-12">
   <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4">
-    <span class="text-sm">&copy; {year} José María Mayén. Todos los derechos reservados.</span>
-
+    
     <div class="flex gap-4">
       {links.map((link) => (
         <a
@@ -40,10 +39,11 @@ const links = [
           rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
           aria-label={link.alt}
           class="hover:scale-110 transition-transform"
-        >
+          >
           <img src={link.icon} alt={link.alt} class="w-6 h-6" />
         </a>
       ))}
     </div>
+    <span class="text-sm">&copy; {year} José María Mayén. Todos los derechos reservados.</span>
   </div>
 </footer>

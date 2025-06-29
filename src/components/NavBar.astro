@@ -1,42 +1,36 @@
 ---
+// filepath: c:\Users\Usuario\Desktop\DAW\portfolio\src\components\NavBar.astro
 import Sidebar from "./Sidebar.astro";
 import LanguageToggle from "./LanguageToggle.astro";
 ---
 
 <header
   id="main-header"
-  class="fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out"
-  style="width:93%;justify-self:anchor-center;"
+  class="fixed top-0 left-0 z-40 transition-all duration-300 ease-in-out w-[93%] xl:w-[50%] mt-6"
+  style="justify-self:anchor-center;"
 >
+  <!-- Fondo blur solo cuando hay scroll, no afecta al menú desplegable -->
+  <div 
+    id="header-bg" 
+    class="absolute left-0 right-0 top-0 bottom-0 mx-auto h-full bg-white/30 rounded-full transition-all duration-300 pointer-events-none opacity-0 mt-0"
+    style="width:100%;max-width:inherit;"
+  ></div>
   <div
-    class="w-full mx-auto px-4 flex justify-between items-center h-16 transition-all duration-300"
+    class="relative w-full mx-auto px-4 flex justify-between items-center h-12 transition-all duration-300"
     id="navbar-inner"
   >
     <LanguageToggle />
+    <!-- <h1 class="text-xl font-bold tracking-widest text-blue-300 drop-shadow-sm select-none">JMMP</h1> -->
     <Sidebar />
   </div>
 
   <script is:inline>
-    const header = document.getElementById("main-header");
-    const inner = document.getElementById("navbar-inner");
-
+    const headerBg = document.getElementById("header-bg");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 10) {
-        header.classList.add(
-          "bg-white/30",
-          "shadow-lg",
-          "rounded-full",
-          "mt-4",
-        );
-        inner.classList.add("h-14");
+        headerBg.classList.add("opacity-100", "backdrop-blur-md", "shadow-lg", "mt-4");
       } else {
-        header.classList.remove(
-          "bg-white/30",
-          "shadow-lg",
-          "rounded-full",
-          "mt-4",
-        );
-        inner.classList.remove("h-14");
+        headerBg.classList.remove("opacity-100", "backdrop-blur-md", "shadow-lg", "mt-4");
       }
     });
   </script>

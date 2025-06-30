@@ -38,8 +38,8 @@ const links = [
           target={link.href.startsWith("http") ? "_blank" : undefined}
           rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
           aria-label={link.alt}
-          class="hover:scale-110 transition-transform"
-          >
+          class="hover:scale-125 hover:bg-white/20 rounded-full p-2 transition-all duration-200"
+        >
           <img src={link.icon} alt={link.alt} class="w-6 h-6" />
         </a>
       ))}

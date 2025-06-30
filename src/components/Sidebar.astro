@@ -1,10 +1,10 @@
 ---
 // filepath: c:\Users\Usuario\Desktop\DAW\portfolio\src\components\Sidebar.astro
 const links = [
-  { href: "#skills", label: "Skills" },
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#formacion", label: "Formación" },
-  { href: "#sobreMi", label: "Sobre Mí" },
+  { href: "#skills", label: "Skills", dataLang: "nav.skills" },
+  { href: "#proyectos", label: "Proyectos", dataLang: "nav.projects" },
+  { href: "#formacion", label: "Formación", dataLang: "nav.formation" },
+  { href: "#sobreMi", label: "Sobre Mí", dataLang: "nav.aboutMe" },
 ];
 ---
 
@@ -32,6 +32,7 @@ const links = [
         <a
           href={link.href}
           class="text-blue-800 hover:text-green-700 transition-colors duration-200"
+          data-lang={link.dataLang}
         >
           {link.label}
         </a>
@@ -46,6 +47,7 @@ const links = [
     <a
       href={link.href}
       class="text-blue-300 hover:text-green-700 transition-colors duration-200"
+      data-lang={link.dataLang}
     >
       {link.label}
     </a>
@@ -65,7 +67,7 @@ const links = [
       document.body.style.overflow = "hidden";
       bars[0].classList.add("rotate-45", "translate-y-1");
       bars[1].classList.add("opacity-0");
-      bars[2].classList.add("-rotate-45", "-translate-y-1");
+      bars[2].classList.add("-rotate-45", "-translate-y-3");
     }
 
     function closeMenu() {
@@ -74,7 +76,7 @@ const links = [
       document.body.style.overflow = "";
       bars[0].classList.remove("rotate-45", "translate-y-1");
       bars[1].classList.remove("opacity-0");
-      bars[2].classList.remove("-rotate-45", "-translate-y-1");
+      bars[2].classList.remove("-rotate-45", "-translate-y-3");
     }
 
     menuBtn.addEventListener("click", () => {

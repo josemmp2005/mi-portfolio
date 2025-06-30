@@ -7,24 +7,15 @@ const { currentLang = "es" } = Astro.props;
     type="checkbox"
     class="sr-only peer"
     id="lang-switch"
-    checked={currentLang === "en"}
     aria-label="Cambiar idioma"
-    onChange={() => {
-      const lang = currentLang === "es" ? "en" : "es";
-      // Guardar posición scroll antes de recargar
-      sessionStorage.setItem("savedScroll", window.scrollY);
-      // Modificar URL con nuevo idioma
-      const url = new URL(window.location.href);
-      url.searchParams.set("lang", lang);
-      window.location.href = url.toString();
-    }}
   />
   <label for="lang-switch" class="block w-14 h-8 bg-white/10 border border-blue-400/30 rounded-full cursor-pointer shadow-inner transition peer-checked:bg-blue-400/20"></label>
   <div class="dot absolute top-1 left-1 w-6 h-6 rounded-full transition-all duration-300 bg-white shadow-lg flex items-center justify-center text-lg pointer-events-none
     peer-checked:translate-x-6 border border-blue-300">
     <img
-      src={currentLang === "en" ? "/img/eng.png" : "/img/esp.png"}
-      alt={currentLang === "en" ? "English" : "Español"}
+      id="flag-image"
+      src="/img/esp.png"
+      alt="Español"
       class="w-5 h-5"
       draggable="false"
     />
@@ -32,14 +23,136 @@ const { currentLang = "es" } = Astro.props;
 </div>
 
 <script is:inline>
-  if (typeof window !== "undefined") {
-    window.addEventListener("load", () => {
-      const savedScroll = sessionStorage.getItem("savedScroll");
-      if (savedScroll) {
-        window.scrollTo(0, parseInt(savedScroll, 10));
-        sessionStorage.removeItem("savedScroll");
+  // Definir las traducciones
+  const translations = {
+    "es": {
+      "nav.skills": "Skills",
+      "nav.projects": "Proyectos",
+      "nav.formation": "Formación",
+      "nav.aboutMe": "Sobre Mí",
+      "hero.hello": "Hola, soy José María",
+      "hero.developer": "Desarrollador de Aplicaciones Web",
+      "hero.description": "Desarrollador en formación con experiencia en entornos de desarrollo web. Actualmente he finalizado mi curso de Desarrollo de Aplicaciones Web, con interés en el desarrollo de Aplicaciones Multiplataforma y el uso de la IA.",
+      "hero.github": "GitHub",
+      "hero.linkedin": "Linkedin",
+      "hero.email": "Correo electrónico",
+      "hero.cv": "CV",
+      "skills.title": "Skills",
+      "projects.title": "Proyectos",
+      "projects.code": "Código",
+      "projects.web": "Web",
+      "formation.title": "Formación",
+      "formation.smr": "S.M.R",
+      "formation.daw": "DAW",
+      "aboutMe.title": "Sobre Mi",
+      "aboutMe.who": "¿Quién Soy?",
+      "aboutMe.whoText": "Desde pequeño me fascinaban los ordenadores. Me gustaba desmontarlos, instalar programas y descubrir cómo funcionaban por dentro. Esa curiosidad fue el primer paso hacia el mundo de la programación y la tecnología, donde encontré mi verdadera pasión.",
+      "aboutMe.sport": "Tecnología y deporte",
+      "aboutMe.sportText": "El deporte siempre ha sido una parte importante de mi vida. Me ha enseñado disciplina, constancia y cómo trabajar en equipo. Gracias a él, mantengo el equilibrio físico y mental que necesito para rendir mejor en mis proyectos.",
+      "aboutMe.future": "Mirando al futuro",
+      "aboutMe.futureText": "Actualmente sigo formándome como desarrollador, con un fuerte interés en la inteligencia artificial. Mi objetivo es especializarme en este campo y aplicar el conocimiento en soluciones reales que tengan un impacto positivo en el mundo.",
+      "project1.title": "MyHandStats",
+      "project1.description": "En este proyecto he desarrollado una aplicación para el análisis de estadísticas de balonmano, como parte de mi Trabajo de Fin de Grado. La app permite registrar y visualizar datos de partidos y jugadores, facilitando el análisis de rendimiento. Para el backend se ha utilizado Python, la interfaz está construida con React y los datos se almacenan en una base de datos PostgreSQL desplegado en Supabase.",
+      "project2.title": "Reserva de Casas Rurales",
+      "project2.description": "En este proyecto se ha desarrollado una página web para la reserva de casas rurales, con un diseño responsive y un panel de administración para la gestión de las reservas, implementando también un modo oscuro nativo. Para este proyecto se ha utilizado HTML, CSS y JS.",
+      "project3.title": "Gestión de Portfolios",
+      "project3.description": "Para este proyecto he desarrollado una aplicación web para la gestión de portfolios, desde la creación de los mismos hasta la edición de estos, pudiendo añadir, proyectos, habilidades y experiencias. En este proyecto se ha utilizado HTML, CSS, PHP y MySQL.",
+      "project4.title": "Gestión de Centros Cívicos",
+      "project4.description": "En este proyecto se ha desarrollado una aplicación web para la gestión de centros cívicos, desde la creación de una API en PHP para el manejo de la base de datos en MySQL, hasta la creación de una aplicación en React para la gestión de los centros cívicos.",
+      "project5.title": "Página de Venta de Zapatillas",
+      "project5.description": "En este proyecto se ha desarrollado una página web para la venta de zapatillas, con un diseño responsive y un panel de administración para la gestión de los productos. Para este proyecto se ha utilizado Wordpress y Woocommerce para la creación de la tienda online."
+    },
+    "en": {
+      "nav.skills": "Skills",
+      "nav.projects": "Projects",
+      "nav.formation": "Education",
+      "nav.aboutMe": "About Me",
+      "hero.hello": "Hi, I'm José María",
+      "hero.developer": "Web Applications Developer",
+      "hero.description": "Developer in training with experience in web development environments. I have just finished my Web Application Development course, with an interest in Multiplatform Application Development and the use of AI.",
+      "hero.github": "GitHub",
+      "hero.linkedin": "Linkedin",
+      "hero.email": "Email",
+      "hero.cv": "CV",
+      "skills.title": "Skills",
+      "projects.title": "Projects",
+      "projects.code": "Code",
+      "projects.web": "Web",
+      "formation.title": "Education",
+      "formation.smr": "S.M.R",
+      "formation.daw": "DAW",
+      "aboutMe.title": "About Me",
+      "aboutMe.who": "Who am I?",
+      "aboutMe.whoText": "Since I was a child, I have been fascinated by computers. I liked to take them apart, install programs, and discover how they worked inside. That curiosity was the first step into the world of programming and technology, where I found my true passion.",
+      "aboutMe.sport": "Technology and sports",
+      "aboutMe.sportText": "Sports have always been an important part of my life. They have taught me discipline, perseverance, and how to work as a team. Thanks to sports, I maintain the physical and mental balance I need to perform better in my projects.",
+      "aboutMe.future": "Looking to the future",
+      "aboutMe.futureText": "I am currently continuing my training as a developer, with a strong interest in artificial intelligence. My goal is to specialize in this field and apply my knowledge to real solutions that have a positive impact on the world.",
+      "project1.title": "MyHandStats",
+      "project1.description": "In this project I have developed an application for analyzing handball statistics, as part of my Final Degree Project. The app allows registering and visualizing match and player data, facilitating performance analysis. Python was used for the backend, the interface is built with React and data is stored in a PostgreSQL database deployed on Supabase.",
+      "project2.title": "Rural House Booking",
+      "project2.description": "In this project, a website was developed for booking rural houses, with a responsive design and an administration panel for managing reservations, also implementing a native dark mode. This project was built using HTML, CSS, and JS.",
+      "project3.title": "Portfolio Management",
+      "project3.description": "For this project, I developed a web application for portfolio management, from creating portfolios to editing them, allowing users to add projects, skills, and experiences. This project was built using HTML, CSS, PHP, and MySQL.",
+      "project4.title": "Civic Center Management",
+      "project4.description": "In this project, a web application was developed for managing civic centers, from creating an API in PHP to handle the MySQL database, to building a React application for managing civic centers.",
+      "project5.title": "Sneaker Store Website",
+      "project5.description": "In this project, a website was developed for selling sneakers, with a responsive design and an administration panel for managing products. This project was built using WordPress and WooCommerce for creating the online store."
+    }
+  };
+
+  function setLanguage(lang) {
+    // Actualizar todos los elementos con data-lang
+    document.querySelectorAll("[data-lang]").forEach(el => {
+      const key = el.getAttribute("data-lang");
+      if (translations[lang] && translations[lang][key]) {
+        el.textContent = translations[lang][key];
       }
     });
+
+    // Actualizar la imagen de la bandera
+    const flagImage = document.getElementById("flag-image");
+    const langSwitch = document.getElementById("lang-switch");
+    
+    if (flagImage) {
+      flagImage.src = lang === "en" ? "/img/esp.png" : "/img/eng.png";
+      flagImage.alt = lang === "en" ? "English" : "Español";
+    }
+    
+    if (langSwitch) {
+      langSwitch.checked = lang === "en";
+    }
+
+    // Guardar el idioma en localStorage
+    localStorage.setItem("lang", lang);
+    
+    // Disparar evento personalizado para notificar el cambio de idioma
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+  }
+
+  function initLanguageToggle() {
+    const langToggle = document.getElementById("lang-switch");
+    
+    if (!langToggle) return;
+
+    // Obtener idioma guardado o usar español por defecto
+    const savedLang = localStorage.getItem("lang") || "es";
+    
+    // Establecer el idioma inicial
+    setLanguage(savedLang);
+
+    // Escuchar cambios en el toggle
+    langToggle.addEventListener("change", function() {
+      const newLang = langToggle.checked ? "en" : "es";
+      setLanguage(newLang);
+    });
+  }
+
+  // Inicializar cuando el DOM esté listo
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initLanguageToggle);
+  } else {
+    initLanguageToggle();
   }
 </script>
 

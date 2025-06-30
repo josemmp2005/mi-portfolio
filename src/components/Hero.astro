@@ -1,37 +1,5 @@
 ---
-import es from '../i18n/es.json';
-import en from '../i18n/en.json';
-
-// Recibe el idioma como prop, por defecto español
-const { lang = "es" } = Astro.props;
-const t = lang === "en" ? en : es;
-
-const links = [
-  {
-    href: "/cv.pdf",
-    icon: "svg/file.svg",
-    alt: t.hero.cv,
-    label: t.hero.cv,
-  },
-  {
-    href: "https://github.com/josemmp2005",
-    icon: "svg/github.svg",
-    alt: t.hero.github,
-    label: t.hero.github,
-  },
-  {
-    href: "https://www.linkedin.com/in/josé-maría-mayén-pérez-401435351",
-    icon: "svg/linkedin.svg",
-    alt: t.hero.linkedin,
-    label: t.hero.linkedin,
-  },
-  {
-    href: "mailto:josemayenp@gmail.com",
-    icon: "svg/mail.svg",
-    alt: t.hero.email,
-    label: "josemayenp@gmail.com",
-  },
-];
+// Valores por defecto en español
 ---
 
 <section
@@ -44,57 +12,56 @@ const links = [
     class="w-[50%] md:w-[15rem] h-auto object-cover rounded-full max-w-[300px] mb-4 mt-12"
     loading="lazy"
   />
-  <h2 class="text-3xl font-bold text-center mb-12 tracking-wide">
-    {t.hero.hello}
+  <h2 class="text-3xl font-bold text-center mb-12 tracking-wide" data-lang="hero.hello">
+    Hola, soy José María
   </h2>
-  <h3 class="text-2xl font-semibold mb-4 text-blue-300">
-    {t.hero.developer}
+  <h3 class="text-2xl font-semibold mb-4 text-blue-300" data-lang="hero.developer">
+    Desarrollador de Aplicaciones Web
   </h3>
-  <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
-    {t.hero.description}
+  <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8" data-lang="hero.description">
+    Desarrollador en formación con experiencia en entornos de desarrollo web. Actualmente he finalizado mi curso de Desarrollo de Aplicaciones Web, con interés en el desarrollo de Aplicaciones Multiplataforma y el uso de la IA.
   </p>
   <div class="flex flex-col items-center mt-8 gap-2 w-full max-w-xl mx-auto">
     <div class="flex justify-center gap-4">
-      {
-        [links[1], links[2]].map((link) => (
-          <a
-            href={link.href}
-            class="flex items-center gap-4 p-4 rounded-xl bg-white/10 hover:bg-white/20 transition shadow-lg backdrop-blur w-40 mx-auto"
-            target={link.href.startsWith("http") ? "_blank" : undefined}
-            rel={
-              link.href.startsWith("http") ? "noopener noreferrer" : undefined
-            }
-          >
-            <img src={link.icon} alt={link.alt} class="w-8 h-8" />
-            <span class="font-semibold text-lg break-all">{link.label}</span>
-          </a>
-        ))
-      }
-    </div>
-    <div>
+      <!-- GitHub -->
       <a
-        href={links[3].href}
-        class="flex items-center gap-4 p-4 rounded-xl bg-white/10 hover:bg-white/20 transition shadow-lg backdrop-blur w-full max-w-xs mx-auto mt-2"
-        target={links[3].href.startsWith("http") ? "_blank" : undefined}
-        rel={links[3].href.startsWith("http")
-          ? "noopener noreferrer"
-          : undefined}
+        href="https://github.com/josemmp2005"
+        class="flex items-center gap-4 p-4 rounded-xl bg-white/10 hover:bg-white/20 transition shadow-lg backdrop-blur w-40 mx-auto"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        <img src={links[3].icon} alt={links[3].alt} class="w-8 h-8" />
-        <span class="font-semibold text-lg truncate">{links[3].label}</span>
+        <img src="svg/github.svg" alt="GitHub" class="w-8 h-8" />
+        <span class="font-semibold text-lg break-all" data-lang="hero.github">GitHub</span>
+      </a>
+      <!-- LinkedIn -->
+      <a
+        href="https://www.linkedin.com/in/josé-maría-mayén-pérez-401435351"
+        class="flex items-center gap-4 p-4 rounded-xl bg-white/10 hover:bg-white/20 transition shadow-lg backdrop-blur w-40 mx-auto"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="svg/linkedin.svg" alt="LinkedIn" class="w-8 h-8" />
+        <span class="font-semibold text-lg break-all" data-lang="hero.linkedin">Linkedin</span>
       </a>
     </div>
     <div>
+      <!-- Email -->
       <a
-        href={links[0].href}
-        class="inline-flex items-center gap-4 p-4 rounded-xl bg-white/10 hover:bg-white/20 transition shadow-lg backdrop-blur mx-auto mt-2"
-        target={links[0].href.startsWith("http") ? "_blank" : undefined}
-        rel={links[0].href.startsWith("http")
-          ? "noopener noreferrer"
-          : undefined}
+        href="mailto:josemayenp@gmail.com"
+        class="flex items-center gap-4 p-4 rounded-xl bg-white/10 hover:bg-white/20 transition shadow-lg backdrop-blur w-full max-w-xs mx-auto mt-2"
       >
-        <img src={links[0].icon} alt={links[0].alt} class="w-8 h-8" />
-        <span class="font-semibold text-lg break-all">{links[0].label}</span>
+        <img src="svg/mail.svg" alt="Email" class="w-8 h-8" />
+        <span class="font-semibold text-lg truncate">josemayenp@gmail.com</span>
+      </a>
+    </div>
+    <div>
+      <!-- CV -->
+      <a
+        href="/cv.pdf"
+        class="inline-flex items-center gap-4 p-4 rounded-xl bg-white/10 hover:bg-white/20 transition shadow-lg backdrop-blur mx-auto mt-2"
+      >
+        <img src="svg/file.svg" alt="CV" class="w-8 h-8" />
+        <span class="font-semibold text-lg break-all" data-lang="hero.cv">CV</span>
       </a>
     </div>
   </div>

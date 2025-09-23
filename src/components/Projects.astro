@@ -29,6 +29,32 @@ const projects = [
     ],
   },
   {
+    title: "Página Web Agroquimicos Mayén",
+    titleKey: "project5.title",
+    description: "En este proyecto se ha desarrollado una página web para la venta de zapatillas, con un diseño responsive y un panel de administración para la gestión de los productos. Para este proyecto se ha utilizado Wordpress y Woocommerce para la creación de la tienda online.",
+    descriptionKey: "project5.description",
+    image: "/img/proyecto-agro.png",
+    alt: "Página de Venta de Zapatillas",
+    tech: ["Astro"],
+    techColors: [
+      "bg-blue-800/20 text-blue-200",
+    ],
+    links: [
+      {
+        href: "https://github.com/josemmp2005/AgroMayenWeb",
+        icon: "/svg/github.svg",
+        label: "projects.code",
+        bg: "bg-gray-800/70 hover:bg-gray-700",
+      },
+      {
+        href: "https://agromayen.netlify.app/", 
+        icon: "/svg/url.svg",
+        label: "projects.web",
+        bg: "bg-blue-800/70 hover:bg-blue-700",
+      },
+    ],
+  },
+  {
     title: "Reserva de Casas Rurales",
     titleKey: "project2.title",
     description: "En este proyecto se ha desarrollado una página web para la reserva de casas rurales, con un diseño responsive y un panel de administración para la gestión de las reservas, implementando también un modo oscuro nativo. Para este proyecto se ha utilizado HTML, CSS y JS.",
@@ -100,28 +126,7 @@ const projects = [
         bg: "bg-gray-800/70 hover:bg-gray-700",
       },
     ],
-  },
-  {
-    title: "Página de Venta de Zapatillas",
-    titleKey: "project5.title",
-    description: "En este proyecto se ha desarrollado una página web para la venta de zapatillas, con un diseño responsive y un panel de administración para la gestión de los productos. Para este proyecto se ha utilizado Wordpress y Woocommerce para la creación de la tienda online.",
-    descriptionKey: "project5.description",
-    image: "/img/proyectoWordpress.png",
-    alt: "Página de Venta de Zapatillas",
-    tech: ["WordPress", "WooCommerce"],
-    techColors: [
-      "bg-blue-800/20 text-blue-200",
-      "bg-pink-500/20 text-pink-200",
-    ],
-    links: [
-      {
-        href: "#",
-        icon: "/svg/github.svg",
-        label: "projects.code",
-        bg: "bg-gray-800/70 hover:bg-gray-700",
-      },
-    ],
-  },
+  }
 ];
 ---
 <section class="py-12 text-white bg-transparent" id="proyectos">

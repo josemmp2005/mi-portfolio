@@ -7,35 +7,28 @@
         <meta name="generator" content={Astro.generator} />
         <title>Astro Basics</title>
     </head>
-    <body class="min-h-screen" class="scroll-smooth">
-        <div class="fixed inset-0 bg-white dark:bg-gray-950 overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950" />
-            <div class="absolute inset-0 overflow-hidden">
-                <svg class="absolute h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <defs>
-                        <linearGradient id="ray-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" class="text-purple-400/30 dark:text-purple-700/20" stop-color="currentColor" />
-                            <stop offset="100%" class="text-transparent" stop-color="currentColor" />
-                        </linearGradient>
-                        <linearGradient id="ray-gradient-2" x1="100%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" class="text-blue-400/30 dark:text-blue-700/20" stop-color="currentColor" />
-                            <stop offset="100%" class="text-transparent" stop-color="currentColor" />
-                        </linearGradient>
-                    </defs>
-                    <polygon points="0,0 100,0 50,100" fill="url(#ray-gradient-1)" />
-                    <polygon points="100,0 100,100 0,50" fill="url(#ray-gradient-2)" />
+    <body class="bg-gradient-to-b from-gray-900 via-gray-700 to-gray-900 text-white min-h-screen flex flex-col transition-all duration-1000 ease-in-out relative">
+        <div class="absolute inset-0 bg-gray-950 overflow-hidden -z-10">
+            <div class="absolute inset-0 bg-gradient-to-br from-rose-950/40 via-violet-950/40 to-teal-950/40" />
+            <div class="absolute inset-0 opacity-20">
+                <svg class="absolute w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path 
+                        d="M0,50 C20,60 40,40 60,50 C80,60 100,40 100,50 V100 H0 Z" 
+                        fill="url(#pastel-gradient-1)" 
+                        class="opacity-40"
+                    />
+                    <path 
+                        d="M0,60 C20,70 40,50 60,60 C80,70 100,50 100,60 V100 H0 Z" 
+                        fill="url(#pastel-gradient-2)" 
+                        class="opacity-60"
+                    />
+                    <path 
+                        d="M0,70 C20,80 40,60 60,70 C80,80 100,60 100,70 V100 H0 Z" 
+                        fill="url(#pastel-gradient-3)" 
+                        class="opacity-80"
+                    />
                 </svg>
             </div>
         </div>
-        <div class="relative z-10">
-            <slot />
-        </div>
-
-<style>
-    html,
-    body {
-        margin: 0;
-        width: 100%;
-        min-height: 100vh;
-    }
-</style>
+        <slot />
+    </body>

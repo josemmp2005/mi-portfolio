@@ -12,7 +12,7 @@ import LanguageToggle from "./LanguageToggle.astro";
   <!-- Fondo blur solo cuando hay scroll, no afecta al menú desplegable -->
   <div 
     id="header-bg" 
-    class="absolute left-0 right-0 top-0 bottom-0 mx-auto h-full bg-white/30 rounded-full transition-all duration-300 pointer-events-none opacity-0 mt-0"
+    class="absolute left-0 right-0 top-0 bottom-0 mx-auto h-full bg-white/10 rounded-full transition-all duration-300 pointer-events-none opacity-0 mt-0"
     style="width:100%;max-width:inherit;margin-top:0;"
   ></div>
   <div
@@ -20,7 +20,6 @@ import LanguageToggle from "./LanguageToggle.astro";
     id="navbar-inner"
   >
     <LanguageToggle />
-    <a href="#inicio"><h1 class="text-xl font-bold tracking-widest text-blue-300 drop-shadow-sm select-none block lg:hidden">JMMP</h1></a>
     <Sidebar />
   </div>
 

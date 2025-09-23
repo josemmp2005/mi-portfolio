@@ -1,46 +1,46 @@
 {
-  "nav": {
-    "skills": "Skills",
-    "projects": "Proyectos",
-    "formation": "Formación",
-    "aboutMe": "Sobre Mí"
-  },
-  "hero": {
-    "hello": "Hola, soy José María",
-    "developer": "Desarrollador de Aplicaciones Web",
-    "description": "Desarrollador en formación con experiencia en entornos de desarrollo web. Actualmente he finalizado mi curso de Desarrollo de Aplicaciones Web, con interés en el desarrollo de Aplicaciones Multiplataforma y el uso de la IA.",
-    "github": "GitHub",
-    "linkedin": "Linkedin",
-    "email": "Correo electrónico",
-    "cv": "CV"
-  },
-  "skills": {
-    "title": "Skills"
-  },
-  "projects": {
-    "title": "Proyectos",
-    "code": "Código",
-    "web": "Web"
-  },
-  "formation": {
-    "title": "Formación",
-    "smr": "S.M.R",
-    "daw": "DAW",
-    "school1": "IES Antonio Gala",
-    "school2": "IES Gran Capitán",
-    "date1": "2021-2023",
-    "date2": "2023-2025"
-  },
-  "aboutMe": {
-    "title": "Sobre Mi",
-    "who": "¿Quién Soy?",
-    "whoText": "Desde pequeño me fascinaban los ordenadores. Me gustaba desmontarlos, instalar programas y descubrir cómo funcionaban por dentro. Esa curiosidad fue el primer paso hacia el mundo de la programación y la tecnología, donde encontré mi verdadera pasión.",
-    "sport": "Tecnología y deporte",
-    "sportText": "El deporte siempre ha sido una parte importante de mi vida. Me ha enseñado disciplina, constancia y cómo trabajar en equipo. Gracias a él, mantengo el equilibrio físico y mental que necesito para rendir mejor en mis proyectos.",
-    "future": "Mirando al futuro",
-    "futureText": "Actualmente sigo formándome como desarrollador, con un fuerte interés en la inteligencia artificial. Mi objetivo es especializarme en este campo y aplicar el conocimiento en soluciones reales que tengan un impacto positivo en el mundo."
-  },
-  "footer": {
-    "rights": "Todos los derechos reservados."
-  }
+    "nav": {
+        "skills": "Skills",
+        "projects": "Proyectos",
+        "formation": "Formación",
+        "aboutMe": "Sobre Mí"
+    },
+    "hero": {
+        "hello": "Hola, soy José María!",
+        "developer": "Desarrollador de Aplicaciones Web",
+        "description": "Desarrollador en formación con experiencia en entornos de desarrollo web. Actualmente he finalizado mi curso de Desarrollo de Aplicaciones Web, con interés en el desarrollo de Aplicaciones Multiplataforma y el uso de la IA.",
+        "github": "GitHub",
+        "linkedin": "Linkedin",
+        "email": "Correo electrónico",
+        "cv": "CV"
+    },
+    "skills": {
+        "title": "Skills"
+    },
+    "projects": {
+        "title": "Proyectos",
+        "code": "Código",
+        "web": "Web"
+    },
+    "formation": {
+        "title": "Formación",
+        "smr": "S.M.R",
+        "daw": "DAW",
+        "school1": "IES Antonio Gala",
+        "school2": "IES Gran Capitán",
+        "date1": "2021-2023",
+        "date2": "2023-2025"
+    },
+    "aboutMe": {
+        "title": "Sobre Mi",
+        "who": "¿Quién Soy?",
+        "whoText": "Desde pequeño me fascinaban los ordenadores. Me gustaba desmontarlos, instalar programas y descubrir cómo funcionaban por dentro. Esa curiosidad fue el primer paso hacia el mundo de la programación y la tecnología, donde encontré mi verdadera pasión.",
+        "sport": "Tecnología y deporte",
+        "sportText": "El deporte siempre ha sido una parte importante de mi vida. Me ha enseñado disciplina, constancia y cómo trabajar en equipo. Gracias a él, mantengo el equilibrio físico y mental que necesito para rendir mejor en mis proyectos.",
+        "future": "Mirando al futuro",
+        "futureText": "Actualmente sigo formándome como desarrollador, con un fuerte interés en la inteligencia artificial. Mi objetivo es especializarme en este campo y aplicar el conocimiento en soluciones reales que tengan un impacto positivo en el mundo."
+    },
+    "footer": {
+        "rights": "Todos los derechos reservados."
+    }
 }

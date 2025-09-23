@@ -1,46 +1,46 @@
 {
-  "nav": {
-    "skills": "Skills",
-    "projects": "Projects",
-    "formation": "Education",
-    "aboutMe": "About Me"
-  },
-  "hero": {
-    "hello": "Hi, I'm José María",
-    "developer": "Web Applications Developer",
-    "description": "Developer in training with experience in web development environments. I have just finished my Web Application Development course, with an interest in Multiplatform Application Development and the use of AI.",
-    "github": "GitHub",
-    "linkedin": "Linkedin",
-    "email": "Email",
-    "cv": "CV"
-  },
-  "skills": {
-    "title": "Skills"
-  },
-  "projects": {
-    "title": "Projects",
-    "code": "Code",
-    "web": "Web"
-  },
-  "formation": {
-    "title": "Education",
-    "smr": "S.M.R",
-    "daw": "DAW",
-    "school1": "IES Antonio Gala",
-    "school2": "IES Gran Capitán",
-    "date1": "2021-2023",
-    "date2": "2023-2025"
-  },
-  "aboutMe": {
-    "title": "About Me",
-    "who": "Who am I?",
-    "whoText": "Since I was a child, I have been fascinated by computers. I liked to take them apart, install programs, and discover how they worked inside. That curiosity was the first step into the world of programming and technology, where I found my true passion.",
-    "sport": "Technology and sports",
-    "sportText": "Sports have always been an important part of my life. They have taught me discipline, perseverance, and how to work as a team. Thanks to sports, I maintain the physical and mental balance I need to perform better in my projects.",
-    "future": "Looking to the future",
-    "futureText": "I am currently continuing my training as a developer, with a strong interest in artificial intelligence. My goal is to specialize in this field and apply my knowledge to real solutions that have a positive impact on the world."
-  },
-  "footer": {
-    "rights": "All rights reserved."
-  }
+    "nav": {
+        "skills": "Skills",
+        "projects": "Projects",
+        "formation": "Education",
+        "aboutMe": "About Me"
+    },
+    "hero": {
+        "hello": "Hi, I'm José María!",
+        "developer": "Web Applications Developer",
+        "description": "Developer in training with experience in web development environments. I have just finished my Web Application Development course, with an interest in Multiplatform Application Development and the use of AI.",
+        "github": "GitHub",
+        "linkedin": "Linkedin",
+        "email": "Email",
+        "cv": "CV"
+    },
+    "skills": {
+        "title": "Skills"
+    },
+    "projects": {
+        "title": "Projects",
+        "code": "Code",
+        "web": "Web"
+    },
+    "formation": {
+        "title": "Education",
+        "smr": "S.M.R",
+        "daw": "DAW",
+        "school1": "IES Antonio Gala",
+        "school2": "IES Gran Capitán",
+        "date1": "2021-2023",
+        "date2": "2023-2025"
+    },
+    "aboutMe": {
+        "title": "About Me",
+        "who": "Who am I?",
+        "whoText": "Since I was a child, I have been fascinated by computers. I liked to take them apart, install programs, and discover how they worked inside. That curiosity was the first step into the world of programming and technology, where I found my true passion.",
+        "sport": "Technology and sports",
+        "sportText": "Sports have always been an important part of my life. They have taught me discipline, perseverance, and how to work as a team. Thanks to sports, I maintain the physical and mental balance I need to perform better in my projects.",
+        "future": "Looking to the future",
+        "futureText": "I am currently continuing my training as a developer, with a strong interest in artificial intelligence. My goal is to specialize in this field and apply my knowledge to real solutions that have a positive impact on the world."
+    },
+    "footer": {
+        "rights": "All rights reserved."
+    }
 }

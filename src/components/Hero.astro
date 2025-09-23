@@ -3,26 +3,31 @@
 ---
 
 <section
-  class="flex flex-col items-center justify-center text-center p-8 gap-5 text-white py-12 min-h-screen opacity-0 translate-y-8 transition-all duration-700"
+  class="flex flex-col justify-around text-left p-8 gap-5 text-white py-12 min-h-screen opacity-100 translate-y-0 transition-all duration-700 sm:justify-center sm:gap-20 "
   id="hero-anim"
 >
-  <img
-    src="/img/foto-mia.jpg"
-    alt="Foto de José María"
-    class="w-[50%] md:w-[15rem] h-auto object-cover rounded-full max-w-[300px] mb-4 mt-12"
-    loading="lazy"
-  />
-  <h2 class="text-3xl font-bold text-center mb-12 tracking-wide" data-lang="hero.hello">
-    Hola, soy José María
-  </h2>
-  <h3 class="text-2xl font-semibold mb-4 text-blue-300" data-lang="hero.developer">
+  <h1
+    class="text-3xl font-bold tracking-wide mt-8 sm:text-center"
+    data-lang="hero.hello"
+  >
+    Hola, soy José María!
+  </h1>
+  <h3
+    class="text-xl font-semibold text-blue-300 sm:text-2xl sm:text-center"
+    data-lang="hero.developer"
+  >
     Desarrollador de Aplicaciones Web
   </h3>
-  <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8" data-lang="hero.description">
-    Desarrollador en formación con experiencia en entornos de desarrollo web. Actualmente he finalizado mi curso de Desarrollo de Aplicaciones Web, con interés en el desarrollo de Aplicaciones Multiplataforma y el uso de la IA.
+  <p
+    class="text-lg text-gray-300 max-w-2xl mx-auto sm:text-center"
+    data-lang="hero.description"
+  >
+    Desarrollador en formación con experiencia en entornos de desarrollo web.
+    Actualmente he finalizado mi curso de Desarrollo de Aplicaciones Web, con
+    interés en el desarrollo de Aplicaciones Multiplataforma y el uso de la IA.
   </p>
-  <div class="flex flex-col items-center mt-8 gap-2 w-full max-w-xl mx-auto">
-    <div class="flex justify-center gap-4">
+  <div class="flex flex-col items-start gap-2 w-full max-w-xl mx-auto sm:items-center">
+    <div class="flex justify-center gap-7">
       <!-- GitHub -->
       <a
         href="https://github.com/josemmp2005"
@@ -31,7 +36,9 @@
         rel="noopener noreferrer"
       >
         <img src="svg/github.svg" alt="GitHub" class="w-8 h-8" />
-        <span class="font-semibold text-lg break-all" data-lang="hero.github">GitHub</span>
+        <span class="font-semibold text-lg break-all" data-lang="hero.github"
+          >GitHub</span
+        >
       </a>
       <!-- LinkedIn -->
       <a
@@ -41,34 +48,41 @@
         rel="noopener noreferrer"
       >
         <img src="svg/linkedin.svg" alt="LinkedIn" class="w-8 h-8" />
-        <span class="font-semibold text-lg break-all" data-lang="hero.linkedin">Linkedin</span>
+        <span class="font-semibold text-lg break-all" data-lang="hero.linkedin"
+          >Linkedin</span
+        >
       </a>
     </div>
-    <div>
-      <!-- Email -->
-      <a
-        href="mailto:josemayenp@gmail.com"
-        class="flex items-center gap-4 p-4 rounded-xl bg-white/10 hover:bg-white/20 transition shadow-lg backdrop-blur w-full max-w-xs mx-auto mt-2"
-      >
-        <img src="svg/mail.svg" alt="Email" class="w-8 h-8" />
-        <span class="font-semibold text-lg truncate">josemayenp@gmail.com</span>
-      </a>
-    </div>
-    <div>
-      <!-- CV -->
-      <a
-        href="/cv-jmmp.pdf"
-        class="inline-flex items-center gap-4 p-4 rounded-xl bg-white/10 hover:bg-white/20 transition shadow-lg backdrop-blur mx-auto mt-2"
-      >
-        <img src="svg/file.svg" alt="CV" class="w-8 h-8" />
-        <span class="font-semibold text-lg break-all" data-lang="hero.cv">CV</span>
-      </a>
+    <div class="flex flex-col aligns sm:flex-row justify-center gap-4 mt-4 w-full">
+      <div>
+        <!-- Email -->
+        <a
+          href="mailto:josemayenp@gmail.com"
+          class="flex items-center gap-10 p-4 rounded-xl bg-white/10 hover:bg-white/20 transition shadow-lg backdrop-blur w-full max-w-xs mx-auto mt-2 sm:gap-7 mt-0 ml-0"
+        >
+          <img src="svg/mail.svg" alt="Email" class="w-8 h-8" />
+          <span class="font-semibold text-lg truncate">josemayenp@gmail.com</span>
+        </a>
+      </div>
+      <div>
+        <!-- CV -->
+        <a
+          href="/cv-jmmp.pdf"
+          class="inline-flex items-center gap-4 p-4 rounded-xl bg-white/10 hover:bg-white/20 transition shadow-lg backdrop-blur mx-auto mt-2"
+        >
+          <img src="svg/file.svg" alt="CV" class="w-8 h-8" />
+          <span class="font-semibold text-lg break-all" data-lang="hero.cv"
+            >CV</span
+          >
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
 <script is:inline>
   const heroAnim = document.getElementById("hero-anim");
+  
   function checkHeroAnim() {
     const rect = heroAnim.getBoundingClientRect();
     if (rect.top < window.innerHeight - 100 && rect.bottom > 100) {
@@ -79,8 +93,18 @@
       heroAnim.classList.add("opacity-0", "translate-y-8");
     }
   }
-  window.addEventListener("scroll", checkHeroAnim);
-  window.addEventListener("resize", checkHeroAnim);
-  // Ejecutar tras el primer render para que aparezca si ya está visible
-  window.addEventListener("DOMContentLoaded", checkHeroAnim);
+  
+  // Inicializar después de que cargue la página
+  window.addEventListener("DOMContentLoaded", () => {
+    // Si el hero ya está visible al cargar la página, mantenerlo visible
+    const rect = heroAnim.getBoundingClientRect();
+    if (rect.top >= 0 && rect.top < window.innerHeight) {
+      heroAnim.classList.add("opacity-100", "translate-y-0");
+      heroAnim.classList.remove("opacity-0", "translate-y-8");
+    }
+    
+    // Configurar los listeners para el scroll
+    window.addEventListener("scroll", checkHeroAnim);
+    window.addEventListener("resize", checkHeroAnim);
+  });
 </script>

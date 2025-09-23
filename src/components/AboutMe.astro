@@ -5,36 +5,54 @@ const aboutMe = [
     title: "¿Quién Soy?",
     titleKey: "aboutMe.who",
     text: "Desde pequeño me fascinaban los ordenadores. Me gustaba desmontarlos, instalar programas y descubrir cómo funcionaban por dentro. Esa curiosidad fue el primer paso hacia el mundo de la programación y la tecnología, donde encontré mi verdadera pasión.",
-    textKey: "aboutMe.whoText"
+    textKey: "aboutMe.whoText",
   },
   {
     title: "Tecnología y deporte",
     titleKey: "aboutMe.sport",
     text: "El deporte siempre ha sido una parte importante de mi vida. Me ha enseñado disciplina, constancia y cómo trabajar en equipo. Gracias a él, mantengo el equilibrio físico y mental que necesito para rendir mejor en mis proyectos.",
-    textKey: "aboutMe.sportText"
+    textKey: "aboutMe.sportText",
   },
   {
     title: "Mirando al futuro",
     titleKey: "aboutMe.future",
     text: "Actualmente sigo formándome como desarrollador, con un fuerte interés en la inteligencia artificial. Mi objetivo es especializarme en este campo y aplicar el conocimiento en soluciones reales que tengan un impacto positivo en el mundo.",
-    textKey: "aboutMe.futureText"
-  }
+    textKey: "aboutMe.futureText",
+  },
 ];
 ---
 
 <section class="py-12" id="sobreMi">
-  <h2 class="text-3xl font-bold text-center text-white mb-8 tracking-wide" data-lang="aboutMe.title">Sobre Mi</h2>
+  <h2
+    class="text-3xl font-bold text-center text-white mb-8 tracking-wide"
+    data-lang="aboutMe.title"
+  >
+    Sobre Mi
+  </h2>
+  <img
+    src="/img/foto-mia.jpg"
+    alt="Foto de José María"
+    class="w-[40%] md:w-[12rem] h-auto object-cover rounded-full max-w-[300px] mb-10 mt-12 mx-auto border-4 border-blue-300 shadow-lg"
+    loading="lazy"
+  />
   <div class="max-w-6xl mx-auto px-4">
     <div
       class="grid md:grid-cols-3 gap-8 opacity-0 translate-y-8 transition-all duration-700"
       id="aboutme-anim"
     >
-      {aboutMe.map((item) => (
-        <article class="bg-white/10 rounded-xl shadow-lg p-8 text-white flex flex-col transition-transform duration-300 hover:scale-105 hover:bg-white/20">
-          <h3 class="text-xl font-semibold text-blue-300 mb-2" data-lang={item.titleKey}>{item.title}</h3>
-          <p data-lang={item.textKey}>{item.text}</p>
-        </article>
-      ))}
+      {
+        aboutMe.map((item) => (
+          <article class="bg-white/10 rounded-xl shadow-lg p-8 text-white flex flex-col transition-transform duration-300 hover:scale-105 hover:bg-white/20">
+            <h3
+              class="text-xl font-semibold text-blue-300 mb-2"
+              data-lang={item.titleKey}
+            >
+              {item.title}
+            </h3>
+            <p data-lang={item.textKey}>{item.text}</p>
+          </article>
+        ))
+      }
     </div>
   </div>
 </section>

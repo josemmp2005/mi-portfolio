@@ -1,6 +1,39 @@
 ---
 const projects = [
   {
+    title: "FitoPrice",
+    titleKey: "project6.title",
+    description: "FitoPrice es una aplicación web para la gestión de precios de productos agrícolas. Permite a los usuarios consultar y comparar precios de diferentes proveedores, así como recibir alertas de cambios de precios. La aplicación está construida con React para el frontend, Express para el backend, y utiliza PostgreSQL en Supabase como base de datos. Además, integra N8N para la automatización de flujos de trabajo y utiliza TailwindCSS junto con ShadcnUI para un diseño moderno y responsivo.",
+    descriptionKey: "project6.description",
+    image: "/img/fitoprice-proyect.png",
+    alt: "FitoPrice",
+    tech: ["React", "Js", "Express", "N8N", "PostgreSQL", "Supabase", "TailwindCSS", "ShadcnUI"],
+    techColors: [
+      "bg-blue-500/20 text-blue-200",
+      "bg-green-500/20 text-green-200",
+      "bg-yellow-700/20 text-yellow-200",
+      "bg-red-500/20 text-red-200",
+      "bg-green-500/20 text-green-200",
+      "bg-yellow-700/20 text-yellow-200",
+      "bg-blue-500/20 text-blue-200",
+      "bg-green-500/20 text-green-200",
+    ],
+    links: [
+      {
+        href: "https://github.com/josemmp2005/fitoprice",
+        icon: "/svg/github.svg",
+        label: "projects.code",
+        bg: "bg-gray-800/70 hover:bg-gray-700",
+      },
+      {
+        href: "https://fitoprice.netlify.app/",
+        icon: "/svg/url.svg",
+        label: "projects.web",
+        bg: "bg-blue-800/70 hover:bg-blue-700",
+      },
+    ],
+  },
+  {
     title: "MyHandStats",
     titleKey: "project1.title",
     description: "En este proyecto he desarrollado una aplicación para el análisis de estadísticas de balonmano, como parte de mi Trabajo de Fin de Grado. La app permite registrar y visualizar datos de partidos y jugadores, facilitando el análisis de rendimiento. Para el backend se ha utilizado Python, la interfaz está construida con React y los datos se almacenan en una base de datos PostgreSQL desplegado en Supabase.",
